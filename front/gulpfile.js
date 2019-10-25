@@ -6,7 +6,9 @@ let concat = require('gulp-concat');
 let cache = require('gulp-cache');
 let imagemin = require('gulp-imagemin');
 let bs = require('browser-sync').create();
-var path = {
+let scss = require('gulp-sass');
+
+let path = {
     'css': './src/css/',
     'js': './src/js/',
     'images': './src/images/',
@@ -16,6 +18,17 @@ var path = {
     'images_dist': './dist/images'
 };
 
+// 监听scss文件，自动转换为css
+gulp.task('scss', function (done) {
+    gulp.src(path.css + '*.scss')
+        .pipe(scss().on('error', scss.logError))
+        .pipe(cssnano())
+        .pipe(rename({'suffix': '.min'}))
+        .pipe(gulp.dest(path.css_dist))
+        .pipe(bs.stream())
+    done()
+});
+
 gulp.task('css', function (done) {
     gulp.src(path.css + '*.css')
         .pipe(cssnano())
@@ -24,6 +37,7 @@ gulp.task('css', function (done) {
         .pipe(bs.stream()); // 重新加载
     done()
 });
+
 
 gulp.task('js', function (done) {
     gulp.src(path.js + '*.js')
@@ -56,6 +70,7 @@ gulp.task('watch', function (done) {
     gulp.watch(path.js + '*.js', gulp.series('js'));
     gulp.watch(path.images + '*.*', gulp.series('images'));
     gulp.watch(path.html + '*.*', gulp.series('html'));
+    gulp.watch(path.css + '*.scss', gulp.series('scss'));
     done()
 });
 
