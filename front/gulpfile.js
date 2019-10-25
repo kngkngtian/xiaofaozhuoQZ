@@ -21,6 +21,7 @@ gulp.task('css', function () {
         .pipe(cssnano())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.css_dist))
+        .pipe(bs.stream()) // 重新加载
 });
 
 gulp.task('js', function () {
@@ -28,6 +29,8 @@ gulp.task('js', function () {
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.js_dist))
+        .pipe(bs.stream()) // 重新加载
+
 });
 
 gulp.task('images', function () {
@@ -35,6 +38,8 @@ gulp.task('images', function () {
         .pipe(imagemin())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.images_dist))
+        .pipe(bs.stream()) // 重新加载
+
 });
 
 // 配置监视器
@@ -55,4 +60,7 @@ gulp.task('bs', function () {
 
 
 // 创建一个默认的任务
-gulp.task('default', ['bs', 'watch']);
+// gulp.task('default', ['bs', 'watch']); // Gulp 4最大的变化就是你不能像以前那样传递一个依赖任务列表。
+// gulp.series：按照顺序执行
+// gulp.paralle：可以并行计算
+gulp.task('default', gulp.series('bs', 'watch'));
