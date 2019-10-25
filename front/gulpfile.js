@@ -10,6 +10,7 @@ var path = {
     'css': './src/css/',
     'js': './src/js/',
     'images': './src/images/',
+    'html': './templates/',
     'css_dist': './dist/css',
     'js_dist': './dist/js',
     'images_dist': './dist/images'
@@ -43,6 +44,11 @@ gulp.task('images', function (done) {
     done()
 });
 
+gulp.task('html', function (done) {
+    gulp.src(path.html + '*.html')
+        .pipe(bs.stream());
+    done()
+});
 // 配置监视器
 // gulp4 已经不能用[]的形式传递函数，现在只能通过gulp.series串行或者gulp.paralle并行来传递，每个地方都是这样
 gulp.task('watch', function (done) {
