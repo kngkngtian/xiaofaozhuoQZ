@@ -6,56 +6,60 @@ let concat = require('gulp-concat');
 let cache = require('gulp-cache');
 let imagemin = require('gulp-imagemin');
 let bs = require('browser-sync').create();
-
 var path = {
     'css': './src/css/',
     'js': './src/js/',
     'images': './src/images/',
-    'css_dist': './src/dist/css',
-    'js_dist': './src/dist/js',
-    'images_dist': './src/dist/images'
+    'css_dist': './dist/css',
+    'js_dist': './dist/js',
+    'images_dist': './dist/images'
 };
 
-gulp.task('css', function () {
+gulp.task('css', function (done) {
     gulp.src(path.css + '*.css')
         .pipe(cssnano())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.css_dist))
-        .pipe(bs.stream()) // 重新加载
+        .pipe(bs.stream()); // 重新加载
+    done()
 });
 
-gulp.task('js', function () {
-    gulp.src(path.js + '*.css')
+gulp.task('js', function (done) {
+    gulp.src(path.js + '*.js')
         .pipe(uglify())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.js_dist))
-        .pipe(bs.stream()) // 重新加载
+        .pipe(bs.stream()); // 重新加载
+    done()
 
 });
 
-gulp.task('images', function () {
+gulp.task('images', function (done) {
     gulp.src(path.images + '*.*')
         .pipe(imagemin())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.images_dist))
-        .pipe(bs.stream()) // 重新加载
-
+        .pipe(bs.stream()); // 重新加载
+    done()
 });
 
 // 配置监视器
-gulp.task('watch', function () {
-    gulp.watch(path.css + '*.css', ['css']);
-    gulp.watch(path.js + '*.js', ['js']);
-    gulp.watch(path.images + '*.*', ['images']);
+// gulp4 已经不能用[]的形式传递函数，现在只能通过gulp.series串行或者gulp.paralle并行来传递，每个地方都是这样
+gulp.task('watch', function (done) {
+    gulp.watch(path.css + '*.css', gulp.series('css'));
+    gulp.watch(path.js + '*.js', gulp.series('js'));
+    gulp.watch(path.images + '*.*', gulp.series('images'));
+    done()
 });
 
 // 初始化browser-sync的任务
-gulp.task('bs', function () {
+gulp.task('bs', function (done) {
     bs.init({
         'server': {
             'baseDir': './'
         }
     });
+    done()
 });
 
 
