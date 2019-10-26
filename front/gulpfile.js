@@ -7,6 +7,9 @@ let cache = require('gulp-cache');
 let imagemin = require('gulp-imagemin');
 let bs = require('browser-sync').create();
 let scss = require('gulp-sass');
+// js错误处理插件
+let util = require('gulp-util'); // 打印漂亮的log
+let sourcemaps = require('gulp-sourcemaps'); // 出错后在浏览器给出反馈,可以找到压缩后js的出错位置
 
 let path = {
     'css': './src/css/',
@@ -20,12 +23,13 @@ let path = {
 
 // 监听scss文件，自动转换为css
 gulp.task('scss', function (done) {
+    // TODO 取消注释
     gulp.src(path.css + '*.scss')
         .pipe(scss().on('error', scss.logError))
-        .pipe(cssnano())
+        // .pipe(cssnano())
         .pipe(rename({'suffix': '.min'}))
         .pipe(gulp.dest(path.css_dist))
-        .pipe(bs.stream())
+        .pipe(bs.stream());
     done()
 });
 
@@ -41,8 +45,10 @@ gulp.task('css', function (done) {
 
 gulp.task('js', function (done) {
     gulp.src(path.js + '*.js')
-        .pipe(uglify())
+        .pipe(sourcemaps.init()) // 初始化sourcemaps
+        .pipe(uglify().on('error', util.log)) // 设置log输出
         .pipe(rename({'suffix': '.min'}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.js_dist))
         .pipe(bs.stream()); // 重新加载
     done()
