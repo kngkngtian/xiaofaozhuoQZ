@@ -9,7 +9,8 @@
     left: 0;
     right: 0;
     top: 0;
-    opacity: 0.5;
+    //opacity: 0.5;
+    z-index: 100;
 
     .container {
         width: $pageWidth;
@@ -103,6 +104,7 @@
                 height: 202px;
                 background: #5c87d9;
                 position: relative;
+                overflow: hidden; // 超出部分的隐藏
 
                 .banner-ul {
                     overflow: hidden;

@@ -18,7 +18,7 @@
 
 function Banner() {
     this.bannerWidth = 798;
-    this.index = 0; // 记录轮播图位置
+    this.index = 1; // 记录轮播图位置
     this.bannerGroup = $('#banner-group');
     this.bannerUl = $('#banner-ul');
     this.leftArrow = $('#left-arrow');
@@ -31,8 +31,17 @@ function Banner() {
 // 动态设置banner轮播图总宽度
 Banner.prototype.initBanner = function () {
     var self = this;
-    self.bannerUl.css({'width': 798 * self.bannerCount});
-}
+    self.bannerUl.css({'width': self.bannerWidth * self.bannerCount});
+
+    var firstBanner = self.liList.eq(0).clone();
+    var lastBanner = self.liList.eq(self.bannerCount - 1).clone();
+    self.bannerUl.append(firstBanner);
+    self.bannerUl.prepend(lastBanner);
+    self.bannerUl.css({
+        'width': self.bannerWidth * (self.bannerCount + 2),
+        'left': -self.bannerWidth
+    });
+};
 
 // 监听圆点
 Banner.prototype.listenPageControl = function () {
@@ -48,7 +57,7 @@ Banner.prototype.listenPageControl = function () {
         // console.log(value);
         // console.log('=============')
     });
-}
+};
 
 // 圆点控制
 Banner.prototype.initPageControl = function () {
@@ -79,8 +88,16 @@ Banner.prototype.toggleArrow = function (isShow) {
 Banner.prototype.animate = function () {
     var self = this;
     self.bannerUl.animate({'left': -798 * self.index}, 500); // 平滑滚动
-    // 先找到当前在的 index 激活，然后将其他兄弟标签取消激活
-    self.pageControl.children('li').eq(self.index).addClass('active').siblings().removeClass('active');
+    var index = self.index;
+    if (index === 0) {
+        index = self.bannerCount - 1;
+    } else if (index === self.bannerCount + 1) {
+        index = 0
+    } else {
+        index = self.index - 1;
+    }
+    // 先找到当前在的 index 激活，然后将其他兄弟标签取消激活.
+    self.pageControl.children('li').eq(index).addClass('active').siblings().removeClass('active');
 };
 
 // 监听鼠标
@@ -104,13 +121,17 @@ Banner.prototype.loop = function () {
     // var index = 0;
     // 将计时器绑定到对象上
     this.timer = setInterval(function () {
-        if (self.index === self.bannerCount) {
-            self.index = 0;
+        if (self.index === self.bannerCount + 1) {
+            // 当轮播到最后一张图，也就是第一张的克隆时，应瞬移到真正的第一张
+            // 然后指定下一张应为第二张图片
+            self.bannerUl.css({'left': -self.bannerWidth});
+            self.index = 2;
             // console.log(self.index);
             // console.log('fuck')
+        } else {
+            self.index++;
         }
         self.animate();
-        self.index++;
     }, 2000) // 定时器
 };
 
@@ -140,12 +161,12 @@ Banner.prototype.listenArrowClick = function () {
 
 // 入口
 Banner.prototype.run = function () {
-    this.loop();
     this.initBanner();
     this.listenBannerHover();
     this.initPageControl();
     this.listenArrowClick();
     this.listenPageControl();
+    this.loop();
 };
 
 
