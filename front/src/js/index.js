@@ -17,6 +17,7 @@
 // var banner = new Banner();
 
 function Banner() {
+    this.bannerWidth = 798;
     this.index = 0; // 记录轮播图位置
     this.bannerGroup = $('#banner-group');
     this.bannerUl = $('#banner-ul');
@@ -24,6 +25,42 @@ function Banner() {
     this.rightArrow = $('#right-arrow');
     this.liList = this.bannerUl.children('li');
     this.bannerCount = this.liList.length;
+    this.pageControl = $('.page-control')
+}
+
+// 动态设置banner轮播图总宽度
+Banner.prototype.initBanner = function () {
+    var self = this;
+    self.bannerUl.css({'width': 798 * self.bannerCount});
+}
+
+// 监听圆点
+Banner.prototype.listenPageControl = function () {
+    var self = this;
+    // console.log(self.pageControl.children('li'));
+    self.pageControl.children('li').each(function (index, obj) {
+        // 将 obj 包装成 jquery 对象
+        $(obj).click(function () {
+            self.index = index;
+            self.animate();
+        })
+        // console.log(index);
+        // console.log(value);
+        // console.log('=============')
+    });
+}
+
+// 圆点控制
+Banner.prototype.initPageControl = function () {
+    var self = this;
+    for (var i = 0; i < self.bannerCount; i++) {
+        var circle = $('<li></li>');
+        self.pageControl.append(circle);
+        if (i === 0) {
+            circle.addClass('active');
+        }
+    }
+    self.pageControl.css({'width': 8 * 2 + self.bannerCount * 15 + 16 * (self.bannerCount - 1)})
 }
 
 // 箭头显示控制
@@ -38,9 +75,12 @@ Banner.prototype.toggleArrow = function (isShow) {
     }
 };
 
+// 动画效果
 Banner.prototype.animate = function () {
     var self = this;
     self.bannerUl.animate({'left': -798 * self.index}, 500); // 平滑滚动
+    // 先找到当前在的 index 激活，然后将其他兄弟标签取消激活
+    self.pageControl.children('li').eq(self.index).addClass('active').siblings().removeClass('active');
 };
 
 // 监听鼠标
@@ -66,6 +106,7 @@ Banner.prototype.loop = function () {
     this.timer = setInterval(function () {
         if (self.index === self.bannerCount) {
             self.index = 0;
+            // console.log(self.index);
             // console.log('fuck')
         }
         self.animate();
@@ -100,8 +141,11 @@ Banner.prototype.listenArrowClick = function () {
 // 入口
 Banner.prototype.run = function () {
     this.loop();
+    this.initBanner();
     this.listenBannerHover();
+    this.initPageControl();
     this.listenArrowClick();
+    this.listenPageControl();
 };
 
 

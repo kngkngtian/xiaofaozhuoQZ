@@ -143,6 +143,36 @@
                     right: 20px;
                 }
 
+                .page-control-group {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 20px;
+
+                    .page-control { // 不指定宽度无法居中
+                        margin: 0 auto;
+                        overflow: hidden;
+
+                        li {
+                            width: 15px;
+                            height: 15px;
+                            border: 2px solid white; // 边框
+                            border-radius: 50%; // 弧度
+                            float: left;
+                            margin: 0 8px;
+                            // 默认为 content-box 宽度为元素本身的宽度+边框
+                            // border-box 宽度等于元素的宽度，边框缩入元素
+                            box-sizing: border-box;
+                            cursor: pointer;
+
+                            &.active {
+                                background: white;
+                            }
+                        }
+                    }
+
+                }
+
             }
         }
 
