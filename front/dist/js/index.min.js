@@ -100,7 +100,7 @@ Banner.prototype.animate = function () {
     self.pageControl.children('li').eq(index).addClass('active').siblings().removeClass('active');
 };
 
-// 监听鼠标
+// 监听鼠标放置在轮播图上
 Banner.prototype.listenBannerHover = function () {
     var self = this;
     self.bannerGroup.hover(function () {
@@ -139,17 +139,19 @@ Banner.prototype.loop = function () {
 // 监听箭头点击
 Banner.prototype.listenArrowClick = function () {
     var self = this;
-    self.rightArrow.click(function () {
+    self.leftArrow.click(function () {
         if (self.index === 0) {
+            self.bannerUl.css({'left': -self.bannerWidth * self.bannerCount})
             self.index = self.bannerCount - 1;
         } else {
             self.index--;
         }
         self.animate();
     });
-    self.leftArrow.click(function () {
-        if (self.index === self.bannerCount - 1) {
-            self.index = 0;
+    self.rightArrow.click(function () {
+        if (self.index === self.bannerCount + 1) {
+            self.bannerUl.css({'left': -self.bannerWidth});
+            self.index = 2;
         } else {
             self.index++;
         }
