@@ -286,6 +286,21 @@ body {
                     }
 
                 }
+
+                .load-more-group {
+                    padding: 20px 0;
+                    text-align: center; // 居中文字
+
+                    .load-more {
+                        width: 400px;
+                        height: 40px;
+                        background: #d2dcea;
+                        color: #6d85ac;
+                        border: none; // 删除丑陋的外边线
+                        outline: none; // 删除丑陋的指示外边线
+                        cursor: pointer;
+                    }
+                }
             }
         }
 
