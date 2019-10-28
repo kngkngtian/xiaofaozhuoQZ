@@ -45,10 +45,10 @@ gulp.task('css', function (done) {
 
 gulp.task('js', function (done) {
     gulp.src(path.js + '*.js')
-        .pipe(sourcemaps.init()) // 初始化sourcemaps
-        .pipe(uglify().on('error', util.log)) // 设置log输出
+    // .pipe(sourcemaps.init()) // 初始化sourcemaps
+    // .pipe(uglify().on('error', util.log)) // 设置log输出
         .pipe(rename({'suffix': '.min'}))
-        .pipe(sourcemaps.write())
+        // .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.js_dist))
         .pipe(bs.stream()); // 重新加载
     done()
