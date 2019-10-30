@@ -50,13 +50,32 @@ Banner.prototype.listenPageControl = function () {
     self.pageControl.children('li').each(function (index, obj) {
         // 将 obj 包装成 jquery 对象
         $(obj).click(function () {
-            self.index = index;
+            // console.log('fuck')
+            console.log(index)
+            self.index = index + 1;
             self.animate();
         })
         // console.log(index);
         // console.log(value);
         // console.log('=============')
     });
+};
+
+// 动画效果
+Banner.prototype.animate = function () {
+    var self = this;
+    self.bannerUl.animate({'left': -798 * (self.index)}, 500); // 平滑滚动
+    console.log(self.index)
+    var index = self.index;
+    if (index === 0) {
+        index = self.bannerCount - 1;
+    } else if (index === self.bannerCount + 1) {
+        index = 0
+    } else {
+        index = self.index - 1;
+    }
+    // 先找到当前在的 index 激活，然后将其他兄弟标签取消激活.
+    self.pageControl.children('li').eq(index).addClass('active').siblings().removeClass('active');
 };
 
 // 圆点控制
@@ -82,22 +101,6 @@ Banner.prototype.toggleArrow = function (isShow) {
         self.leftArrow.hide();
         self.rightArrow.hide();
     }
-};
-
-// 动画效果
-Banner.prototype.animate = function () {
-    var self = this;
-    self.bannerUl.animate({'left': -798 * self.index}, 500); // 平滑滚动
-    var index = self.index;
-    if (index === 0) {
-        index = self.bannerCount - 1;
-    } else if (index === self.bannerCount + 1) {
-        index = 0
-    } else {
-        index = self.index - 1;
-    }
-    // 先找到当前在的 index 激活，然后将其他兄弟标签取消激活.
-    self.pageControl.children('li').eq(index).addClass('active').siblings().removeClass('active');
 };
 
 // 监听鼠标放置在轮播图上
