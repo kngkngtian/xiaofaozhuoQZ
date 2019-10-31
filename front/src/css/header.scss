@@ -1,0 +1,365 @@
+@import 'normalize.scss';
+@import 'constants.scss';
+
+body {
+    background: #f2f2f2;
+    font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+}
+
+.header {
+    width: 100%;
+    height: $navHeight;
+    background: #3a3a3a;
+    position: fixed; //固定导航条位置
+    left: 0;
+    right: 0;
+    top: 0;
+    //opacity: 0.5;
+    z-index: 100;
+
+    .container {
+        width: $pageWidth;
+        height: 100%;
+        //background: yellowgreen;
+        margin: 0 auto;
+        overflow: hidden;
+
+        .logo-box {
+            width: 140px;
+            height: 48px;
+            background: url("https://www.xfz.cn/static/build/images/logo.png");
+            float: left;
+            margin-top: 8px;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .nav {
+            margin-left: 128px;
+            float: left;
+            height: $navHeight;
+            margin-top: 0;
+
+            li {
+                float: left;
+                margin-right: 40px;
+                line-height: $navHeight;
+                height: $navHeight;
+                box-sizing: border-box;
+                padding-inline-start: 0;
+                list-style: none;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+
+                &.active {
+                    border-bottom: 5px solid $themColor;
+                }
+            }
+        }
+
+        .auth-box {
+            float: right;
+            line-height: $navHeight;
+            height: $navHeight;
+            margin-top: 0; //这里如果不设置上边距的话会有一默认的16px边距，不知道为啥
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+
+            .iconfont {
+                font-size: 25px;
+            }
+
+            a {
+                color: white;
+                font-size: 20px;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.main {
+    width: 100%;
+    margin-top: $navHeight + 20px; //因为固定了导航栏，所以主体部分需要下移
+
+    .wrapper {
+        width: $pageWidth;
+        margin: 0 auto;
+        //background: green;
+        //height: 1000px;
+        //overflow: visible;
+        overflow: hidden;
+
+        .main-content-wrapper {
+            float: left;
+            width: $mainBoxWidth;
+        }
+
+        .sidebar-wrapper {
+            float: right;
+            width: $sidebarWidth;
+            background: white;
+
+            .title-group {
+                padding: 18px;
+                overflow: hidden;
+                //border-bottom: 1px solid #5c87d9;
+
+                .title {
+                    float: left;
+                    font-size: 22px;
+                }
+
+                .more {
+                    float: right;
+                    color: $themColor;
+                    font-size: 14px;
+                    line-height: 32px;
+                }
+
+            }
+
+            .advertise-group {
+                img {
+                    width: 100%;
+                }
+            }
+
+            .focus-group {
+                padding: 0 20px;
+                overflow: hidden;
+
+                .left-group {
+                    width: 180px;
+                    float: left;
+
+                    li {
+                        width: 100%;
+                        float: left;
+                        height: 50px;
+                        background: url("https://www.xfz.cn/static/build/images/side-icon.png") no-repeat;
+                        background-size: 26%;
+                        margin-bottom: 20px;
+                        line-height: 50px;
+                        overflow: hidden;
+
+                        a {
+                            margin-left: 64px;
+                            color: #878787;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .zhihu {
+                        background-position: 0 0;
+                    }
+
+                    .weibo {
+                        background-position: 0 -58px;
+                    }
+
+                    .toutiao {
+                        background-position: 0 -118px;
+                    }
+                }
+
+                .right-group {
+                    float: right;
+                    width: 130px;
+                    //background-size: 80%;
+                    background: url("https://www.xfz.cn/static/build/images/xfz-school-wechat-share.png") no-repeat;
+                    background-size: 100%;
+                    background-position-x: -5px;
+                    //height: ;
+
+                    .desc {
+                        margin-top: 130px;
+                        color: #878787;
+                        font-size: 12px;
+                    }
+
+                }
+            }
+
+            .hot-news-groups {
+                .hot-list-group {
+                    li {
+                        padding: 0 20px 20px;
+                        height: 80px;
+                        overflow: hidden;
+
+                        .left-group {
+                            float: left;
+                            width: 204px;
+                            overflow: hidden;
+                            height: 72px;
+                            position: relative;
+
+                            a {
+                                text-decoration: none;
+                                color: #212121;
+
+                                &:hover {
+                                    color: #5c87d9;
+                                }
+                            }
+
+                            .more {
+                                font-size: 14px;
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+
+                                .category {
+                                    color: #5c87d9;
+                                    float: left;
+                                }
+
+                                .pub-time {
+                                    float: right;
+                                    color: #878787;
+                                }
+                            }
+                        }
+
+                        .right-group {
+                            width: 102px;
+                            float: right;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    color: #c9c9c9;
+    padding-top: 20px;
+    //position: absolute;
+    //top: 100%;
+    //width: 100%;
+
+
+    .top-group {
+
+        background: #555e67;
+        height: 100px;
+
+        .top-inner-group {
+            padding-top: 20px;
+            width: $pageWidth;
+            margin: 0 auto;
+            //overflow: hidden;
+            position: relative;
+
+            .logo-box {
+                width: 168px;
+                height: 54px;
+                float: left;
+                background: url("https://www.xfz.cn/static/build/images/logo-test.png") no-repeat;
+                background-size: 100%;
+            }
+
+            .detail-group {
+                float: left;
+                margin-left: 84px;
+
+
+                .line1 {
+                    overflow: hidden;
+
+                    .links {
+                        float: left;
+                        overflow: hidden;
+
+                        li {
+                            float: left;
+                            padding: 0 10px;
+                            border-right: 1px solid #c9c9c9;
+
+                            &:first-of-type {
+                                padding-left: 0;
+                            }
+
+                            a {
+                                color: #c9c9c9;
+                                text-decoration: none;
+                            }
+
+                            &:last-of-type {
+                                border: none;
+                            }
+                        }
+                    }
+
+                    .about-us {
+                        float: left;
+                        margin-left: 40px;;
+
+                        .weixin {
+                            margin-left: 10px;
+                            color: white;
+                            background: url("https://www.xfz.cn/static/build/images/wx-icon.png") no-repeat;
+                            background-size: 24%;
+                            //position: relative;
+                            &:hover .wx-qrcode {
+                                display: block;
+                            }
+
+                            .wx-qrcode {
+                                width: 150px;
+                                height: 150px;
+                                background: url("https://www.xfz.cn/static/build/images/xfz-school-wechat-share.png") no-repeat;
+                                background-size: 100%;
+                                position: absolute;
+                                left: 650px;
+                                top: -145px;
+                                display: none;
+
+                            }
+
+                            .text {
+                                margin-left: 30px;
+                                text-decoration: none;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+
+                .line2 {
+                    .address {
+                        float: left;
+                    }
+
+                    .contact {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+
+    .bottom-group {
+        background: #383e44;
+        height: 68px;
+        line-height: 68px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+}
