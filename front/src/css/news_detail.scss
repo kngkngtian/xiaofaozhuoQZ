@@ -128,7 +128,43 @@
                         cursor: pointer;
                     }
                 }
+
+                .comment-list {
+                    margin-top: 20px;;
+
+                    li {
+                        .comment-info {
+                            overflow: hidden;
+                            height: 30px;
+                            line-height: 30px;
+
+                            .author {
+                                float: left;
+                                color: $assistFontColor;
+                            }
+
+                            .pub-time {
+                                color: $assistFontColor;
+                                float: right;
+                            }
+
+
+                        }
+
+                        .comment-content {
+                            padding: 10px;
+                            //margin-top: 20px;
+                        }
+
+                        border-bottom: 1px solid #eeeeee;
+
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+                    }
+                }
             }
+
         }
     }
 }
