@@ -1,4 +1,6 @@
-@import "header.scss";
+@import "../common/header.scss";
+@import "../common/footer";
+@import "../common/mainbody";
 
 .main-content-wrapper {
     float: left;

@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>小饭桌</title>
-    <link rel="stylesheet" href="../../dist/css/news/index.min.css">
+    <link rel="stylesheet" href="../../dist/css/search/search.min.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1477229_hgtvws7pc9i.css">
     <script src="../../dist/js/jquery.min.js"></script>
-    <script src="../../dist/js/index.min.js"></script>
 </head>
 <body>
 <!--头部-->
@@ -38,41 +37,44 @@
         <!--        新闻-->
         <div class="main-content-wrapper">
             <!--            {#            轮播图#}-->
-            <div class="banner-group" id="banner-group">
-                <ul class="banner-ul" id="banner-ul">
-                    <li>
-                        <a href="#">
-                            <img src="https://static-image.xfz.cn/1570765909_110.png" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="https://static-image.xfz.cn/1571885973_544.jpg" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <img src="https://static-image.xfz.cn/1571292192_9.jpg" alt=""/>
-                        </a>
-                    </li>
-                </ul>
-                <span class="arrow left-arrow" id="left-arrow">&#8249</span>
-                <span class="arrow right-arrow" id="right-arrow">&#8250</span>
-                <div class="page-control-group">
-                    <ul class="page-control">
-                    </ul>
-                </div>
-            </div>
+            <!--            <div class="banner-group" id="banner-group">-->
+            <!--                <ul class="banner-ul" id="banner-ul">-->
+            <!--                    <li>-->
+            <!--                        <a href="#">-->
+            <!--                            <img src="https://static-image.xfz.cn/1570765909_110.png" alt=""/>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">-->
+            <!--                            <img src="https://static-image.xfz.cn/1571885973_544.jpg" alt=""/>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+            <!--                    <li>-->
+            <!--                        <a href="#">-->
+            <!--                            <img src="https://static-image.xfz.cn/1571292192_9.jpg" alt=""/>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--                <span class="arrow left-arrow" id="left-arrow">&#8249</span>-->
+            <!--                <span class="arrow right-arrow" id="right-arrow">&#8250</span>-->
+            <!--                <div class="page-control-group">-->
+            <!--                    <ul class="page-control">-->
+            <!--                    </ul>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
             <!--            {#            新闻主体#}-->
             <div class="list-outer-group">
+                <form action method="get" class="search-group">
+                    <label>
+                        <input type="text" class="search-input" placeholder="请输入关键字">
+                    </label>
+                    <label>
+                        <input type="submit" class="search-submit" value="搜索">
+                    </label>
+                </form>
                 <!--                {#                新闻类别标签#}-->
-                <ul class="list-tab">
-                    <li class="active"><a href="#">最新资讯</a></li>
-                    <li><a href="#">热点</a></li>
-                    <li><a href="#">深度报道</a></li>
-                    <li><a href="#">干货分享</a></li>
-                    <li><a href="#">投资人说</a></li>
-                </ul>
+                <p class="recommend-title">热门推荐</p>
                 <!--                {#                    新闻列表#}-->
                 <ul class="list-inner-group">
                     <li>
@@ -136,10 +138,6 @@
                         </div>
                     </li>
                 </ul>
-                <!--                加载更多按钮-->
-                <div class="load-more-group">
-                    <button class="load-more">查看更多</button>
-                </div>
             </div>
         </div>
         <!--        侧边-->
@@ -197,8 +195,6 @@
                     </li>
                 </ul>
             </div>
-
-
         </div>
     </div>
 </div>

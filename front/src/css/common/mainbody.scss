@@ -1,0 +1,162 @@
+@import 'constants.scss';
+
+.main {
+    width: 100%;
+    margin-top: $navHeight + 20px; //因为固定了导航栏，所以主体部分需要下移
+
+    .wrapper {
+        width: $pageWidth;
+        margin: 0 auto;
+        //background: green;
+        //height: 1000px;
+        //overflow: visible;
+        overflow: hidden;
+
+        .main-content-wrapper {
+            float: left;
+            width: $mainBoxWidth;
+        }
+
+        .sidebar-wrapper {
+            float: right;
+            width: $sidebarWidth;
+            background: white;
+
+            .title-group {
+                padding: 18px;
+                overflow: hidden;
+                //border-bottom: 1px solid #5c87d9;
+
+                .title {
+                    float: left;
+                    font-size: 22px;
+                }
+
+                .more {
+                    float: right;
+                    color: $themColor;
+                    font-size: 14px;
+                    line-height: 32px;
+                }
+
+            }
+
+            .advertise-group {
+                img {
+                    width: 100%;
+                }
+            }
+
+            .focus-group {
+                padding: 0 20px;
+                overflow: hidden;
+
+                .left-group {
+                    width: 180px;
+                    float: left;
+
+                    li {
+                        width: 100%;
+                        float: left;
+                        height: 50px;
+                        background: url("https://www.xfz.cn/static/build/images/side-icon.png") no-repeat;
+                        background-size: 26%;
+                        margin-bottom: 20px;
+                        line-height: 50px;
+                        overflow: hidden;
+
+                        a {
+                            margin-left: 64px;
+                            color: #878787;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .zhihu {
+                        background-position: 0 0;
+                    }
+
+                    .weibo {
+                        background-position: 0 -58px;
+                    }
+
+                    .toutiao {
+                        background-position: 0 -118px;
+                    }
+                }
+
+                .right-group {
+                    float: right;
+                    width: 130px;
+                    //background-size: 80%;
+                    background: url("https://www.xfz.cn/static/build/images/xfz-school-wechat-share.png") no-repeat;
+                    background-size: 100%;
+                    background-position-x: -5px;
+                    //height: ;
+
+                    .desc {
+                        margin-top: 130px;
+                        color: #878787;
+                        font-size: 12px;
+                    }
+
+                }
+            }
+
+            .hot-news-groups {
+                .hot-list-group {
+                    li {
+                        padding: 0 20px 20px;
+                        height: 80px;
+                        overflow: hidden;
+
+                        .left-group {
+                            float: left;
+                            width: 204px;
+                            overflow: hidden;
+                            height: 72px;
+                            position: relative;
+
+                            a {
+                                text-decoration: none;
+                                color: #212121;
+
+                                &:hover {
+                                    color: #5c87d9;
+                                }
+                            }
+
+                            .more {
+                                font-size: 14px;
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+
+                                .category {
+                                    color: #5c87d9;
+                                    float: left;
+                                }
+
+                                .pub-time {
+                                    float: right;
+                                    color: #878787;
+                                }
+                            }
+                        }
+
+                        .right-group {
+                            width: 102px;
+                            float: right;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -24,7 +24,7 @@ let path = {
 // 监听scss文件，自动转换为css
 gulp.task('scss', function (done) {
     // TODO 取消注释
-    gulp.src(path.css + '*.scss')
+    gulp.src(path.css + '**/*.scss')
         .pipe(scss().on('error', scss.logError))
         // .pipe(cssnano())
         .pipe(rename({'suffix': '.min'}))
@@ -44,7 +44,7 @@ gulp.task('css', function (done) {
 
 
 gulp.task('js', function (done) {
-    gulp.src(path.js + '*.js')
+    gulp.src(path.js + '**/*.js')
     // .pipe(sourcemaps.init()) // 初始化sourcemaps
     // .pipe(uglify().on('error', util.log)) // 设置log输出
         .pipe(rename({'suffix': '.min'}))
@@ -73,10 +73,10 @@ gulp.task('html', function (done) {
 // gulp4 已经不能用[]的形式传递函数，现在只能通过gulp.series串行或者gulp.paralle并行来传递，每个地方都是这样
 gulp.task('watch', function (done) {
     gulp.watch(path.css + '*.css', gulp.series('css'));
-    gulp.watch(path.js + '*.js', gulp.series('js'));
+    gulp.watch(path.js + '**/*.js', gulp.series('js'));
     gulp.watch(path.images + '*.*', gulp.series('images'));
     gulp.watch(path.html + '**/*.*', gulp.series('html'));
-    gulp.watch(path.css + '*.scss', gulp.series('scss'));
+    gulp.watch(path.css + '**/*.scss', gulp.series('scss'));
     done()
 });
 

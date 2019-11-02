@@ -1,0 +1,369 @@
+@charset "UTF-8";
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
+dl, dt, dd, ul, ol, li,
+pre,
+form, fieldset, legend, button, input, textarea,
+th, td {
+  margin: 0;
+  padding: 0; }
+
+/** 设置默认字体 **/
+body,
+button, input, select, textarea {
+  font: 14px/1.5 tahoma, \5b8b\4f53, sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal; }
+
+address, cite, dfn, em, var {
+  font-style: normal; }
+
+/* 将斜体扶正 */
+code, kbd, pre, samp {
+  font-family: courier new, courier, monospace; }
+
+/* 统一等宽字体 */
+small {
+  font-size: 12px; }
+
+/* 小于 12px 的中文很难阅读, 让 small 正常化 */
+/** 重置列表元素 **/
+ul, ol {
+  list-style: none; }
+
+/** 重置文本格式元素 **/
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+sup {
+  vertical-align: text-top; }
+
+/* 重置, 减少对行高的影响 */
+sub {
+  vertical-align: text-bottom; }
+
+/** 重置表单元素 **/
+legend {
+  color: #000; }
+
+/* for ie6 */
+fieldset, img {
+  border: 0; }
+
+/* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea {
+  font-size: 100%; }
+
+/* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+/** 重置表格元素 **/
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* 重置 HTML5 元素 */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section,
+summary, time, mark, audio, video {
+  display: block;
+  margin: 0;
+  padding: 0; }
+
+mark {
+  background: #ff0; }
+
+/* 设置placeholder的默认样式 */
+:-moz-placeholder {
+  color: #ddd;
+  opacity: 1; }
+
+::-moz-placeholder {
+  color: #ddd;
+  opacity: 1; }
+
+input:-ms-input-placeholder {
+  color: #ddd;
+  opacity: 1; }
+
+input::-webkit-input-placeholder {
+  color: #ddd;
+  opacity: 1; }
+
+body {
+  background: #f2f2f2;
+  font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif; }
+
+.header {
+  width: 100%;
+  height: 64px;
+  background: #3a3a3a;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100; }
+  .header .container {
+    width: 1180px;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden; }
+    .header .container .logo-box {
+      width: 140px;
+      height: 48px;
+      background: url("https://www.xfz.cn/static/build/images/logo.png");
+      float: left;
+      margin-top: 8px; }
+      .header .container .logo-box a {
+        display: block;
+        width: 100%;
+        height: 100%; }
+    .header .container .nav {
+      margin-left: 128px;
+      float: left;
+      height: 64px;
+      margin-top: 0; }
+      .header .container .nav li {
+        float: left;
+        margin-right: 40px;
+        line-height: 64px;
+        height: 64px;
+        box-sizing: border-box;
+        padding-inline-start: 0;
+        list-style: none; }
+        .header .container .nav li a {
+          color: white;
+          text-decoration: none; }
+        .header .container .nav li.active {
+          border-bottom: 5px solid #5c87d9; }
+    .header .container .auth-box {
+      float: right;
+      line-height: 64px;
+      height: 64px;
+      margin-top: 0;
+      color: white;
+      font-size: 20px;
+      text-decoration: none; }
+      .header .container .auth-box .iconfont {
+        font-size: 25px; }
+      .header .container .auth-box a {
+        color: white;
+        font-size: 20px;
+        text-decoration: none; }
+
+.main {
+  width: 100%;
+  margin-top: 84px; }
+  .main .wrapper {
+    width: 1180px;
+    margin: 0 auto;
+    overflow: hidden; }
+    .main .wrapper .main-content-wrapper {
+      float: left;
+      width: 798px; }
+    .main .wrapper .sidebar-wrapper {
+      float: right;
+      width: 356px;
+      background: white; }
+      .main .wrapper .sidebar-wrapper .title-group {
+        padding: 18px;
+        overflow: hidden; }
+        .main .wrapper .sidebar-wrapper .title-group .title {
+          float: left;
+          font-size: 22px; }
+        .main .wrapper .sidebar-wrapper .title-group .more {
+          float: right;
+          color: #5c87d9;
+          font-size: 14px;
+          line-height: 32px; }
+      .main .wrapper .sidebar-wrapper .advertise-group img {
+        width: 100%; }
+      .main .wrapper .sidebar-wrapper .focus-group {
+        padding: 0 20px;
+        overflow: hidden; }
+        .main .wrapper .sidebar-wrapper .focus-group .left-group {
+          width: 180px;
+          float: left; }
+          .main .wrapper .sidebar-wrapper .focus-group .left-group li {
+            width: 100%;
+            float: left;
+            height: 50px;
+            background: url("https://www.xfz.cn/static/build/images/side-icon.png") no-repeat;
+            background-size: 26%;
+            margin-bottom: 20px;
+            line-height: 50px;
+            overflow: hidden; }
+            .main .wrapper .sidebar-wrapper .focus-group .left-group li a {
+              margin-left: 64px;
+              color: #878787;
+              font-size: 14px; }
+          .main .wrapper .sidebar-wrapper .focus-group .left-group .zhihu {
+            background-position: 0 0; }
+          .main .wrapper .sidebar-wrapper .focus-group .left-group .weibo {
+            background-position: 0 -58px; }
+          .main .wrapper .sidebar-wrapper .focus-group .left-group .toutiao {
+            background-position: 0 -118px; }
+        .main .wrapper .sidebar-wrapper .focus-group .right-group {
+          float: right;
+          width: 130px;
+          background: url("https://www.xfz.cn/static/build/images/xfz-school-wechat-share.png") no-repeat;
+          background-size: 100%;
+          background-position-x: -5px; }
+          .main .wrapper .sidebar-wrapper .focus-group .right-group .desc {
+            margin-top: 130px;
+            color: #878787;
+            font-size: 12px; }
+      .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li {
+        padding: 0 20px 20px;
+        height: 80px;
+        overflow: hidden; }
+        .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group {
+          float: left;
+          width: 204px;
+          overflow: hidden;
+          height: 72px;
+          position: relative; }
+          .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group a {
+            text-decoration: none;
+            color: #212121; }
+            .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group a:hover {
+              color: #5c87d9; }
+          .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group .more {
+            font-size: 14px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0; }
+            .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group .more .category {
+              color: #5c87d9;
+              float: left; }
+            .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .left-group .more .pub-time {
+              float: right;
+              color: #878787; }
+        .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .right-group {
+          width: 102px;
+          float: right; }
+          .main .wrapper .sidebar-wrapper .hot-news-groups .hot-list-group li .right-group img {
+            width: 100%;
+            height: 100%; }
+
+.footer {
+  color: #c9c9c9;
+  padding-top: 20px; }
+  .footer .top-group {
+    background: #555e67;
+    height: 100px; }
+    .footer .top-group .top-inner-group {
+      padding-top: 20px;
+      width: 1180px;
+      margin: 0 auto;
+      position: relative; }
+      .footer .top-group .top-inner-group .logo-box {
+        width: 168px;
+        height: 54px;
+        float: left;
+        background: url("https://www.xfz.cn/static/build/images/logo-test.png") no-repeat;
+        background-size: 100%; }
+      .footer .top-group .top-inner-group .detail-group {
+        float: left;
+        margin-left: 84px; }
+        .footer .top-group .top-inner-group .detail-group .line1 {
+          overflow: hidden; }
+          .footer .top-group .top-inner-group .detail-group .line1 .links {
+            float: left;
+            overflow: hidden; }
+            .footer .top-group .top-inner-group .detail-group .line1 .links li {
+              float: left;
+              padding: 0 10px;
+              border-right: 1px solid #c9c9c9; }
+              .footer .top-group .top-inner-group .detail-group .line1 .links li:first-of-type {
+                padding-left: 0; }
+              .footer .top-group .top-inner-group .detail-group .line1 .links li a {
+                color: #c9c9c9;
+                text-decoration: none; }
+              .footer .top-group .top-inner-group .detail-group .line1 .links li:last-of-type {
+                border: none; }
+          .footer .top-group .top-inner-group .detail-group .line1 .about-us {
+            float: left;
+            margin-left: 40px; }
+            .footer .top-group .top-inner-group .detail-group .line1 .about-us .weixin {
+              margin-left: 10px;
+              color: white;
+              background: url("https://www.xfz.cn/static/build/images/wx-icon.png") no-repeat;
+              background-size: 24%; }
+              .footer .top-group .top-inner-group .detail-group .line1 .about-us .weixin:hover .wx-qrcode {
+                display: block; }
+              .footer .top-group .top-inner-group .detail-group .line1 .about-us .weixin .wx-qrcode {
+                width: 150px;
+                height: 150px;
+                background: url("https://www.xfz.cn/static/build/images/xfz-school-wechat-share.png") no-repeat;
+                background-size: 100%;
+                position: absolute;
+                left: 650px;
+                top: -145px;
+                display: none; }
+              .footer .top-group .top-inner-group .detail-group .line1 .about-us .weixin .text {
+                margin-left: 30px;
+                text-decoration: none;
+                color: white; }
+        .footer .top-group .top-inner-group .detail-group .line2 .address {
+          float: left; }
+        .footer .top-group .top-inner-group .detail-group .line2 .contact {
+          float: right; }
+  .footer .bottom-group {
+    background: #383e44;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    margin-bottom: 0; }
+
+.main .wrapper .main-content-wrapper .advertise-group {
+  width: 100%;
+  height: 200px; }
+  .main .wrapper .main-content-wrapper .advertise-group img {
+    width: 100%;
+    height: 100%; }
+
+.main .wrapper .main-content-wrapper .document-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff; }
+  .main .wrapper .main-content-wrapper .document-list li {
+    width: 370px;
+    height: 150px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    .main .wrapper .main-content-wrapper .document-list li .category-group {
+      width: 100px;
+      height: 150px;
+      background-size: 100%;
+      background-position: 0 0;
+      float: left; }
+    .main .wrapper .main-content-wrapper .document-list li .document-info {
+      float: left;
+      padding: 10px;
+      position: relative;
+      width: 270px;
+      height: 150px;
+      box-sizing: border-box; }
+      .main .wrapper .main-content-wrapper .document-list li .document-info .document-title {
+        color: #212121;
+        font-size: 16px; }
+      .main .wrapper .main-content-wrapper .document-list li .document-info .document-desc {
+        color: #878787;
+        font-size: 14px;
+        margin-top: 20px; }
+      .main .wrapper .main-content-wrapper .document-list li .document-info .document-price {
+        position: absolute;
+        left: 0;
+        right: 20px;
+        bottom: 20px;
+        color: #f76363;
+        text-align: right; }

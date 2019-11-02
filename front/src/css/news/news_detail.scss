@@ -1,4 +1,6 @@
-@import "header";
+@import "../common/header.scss";
+@import "../common/footer";
+@import "../common/mainbody";
 
 .main {
     .wrapper {
@@ -9,6 +11,7 @@
 
             .news-wrapper {
                 padding: 20px;
+                text-decoration: none;
 
                 .title {
                     color: $mainFontColor;
